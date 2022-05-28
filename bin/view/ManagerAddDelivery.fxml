@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane nodeOrientation="RIGHT_TO_LEFT" styleClass="bodybg" stylesheets="@application.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManagerAddDelController">
+   <center>
+      <BorderPane fx:id="managerAddDelAndorder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <center>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label text="בחרו אזור:" />
+                        <ComboBox fx:id="delArea" prefWidth="150.0" />
+                        <Button mnemonicParsing="false" onAction="#showReleventCustomers" text="הצג לקוחות רלוונטים">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label fx:id="status" prefHeight="18.0" prefWidth="577.0" />
+                  <ListView fx:id="customerList" prefHeight="200.0" prefWidth="274.0" />
+                  <Label fx:id="status2" prefHeight="18.0" prefWidth="584.0" />
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <Label fx:id="customerNow" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+   </center>
+   <bottom>
+      <ButtonBar BorderPane.alignment="CENTER">
+         <buttons>
+            <Button fx:id="btnStartOrder" mnemonicParsing="false" onAction="#startOrders" text="צרו הזמנה עבור הלקוח/ה" />
+            <Button fx:id="btnShoppingBag" mnemonicParsing="false" onAction="#showShoppingBag" text="הצג את סל הקניות" />
+         </buttons>
+      </ButtonBar>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,60 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.header-section {
+    -fx-padding: 10px;
+    -fx-font-size: 20px;
+    -fx-background-image: url("bg_header.jpg");
+    -fx-background-size: 100%, 100%;
+    
+}
+
+/*     
+ * -fx-background-image: url("297327124.jpg");
+ * -fx-background-color: teal;
+ *  #FED8CC;
+ * #AF4744  bordo-brown
+ * 
+*/
+
+.bodybg{
+	-fx-background-image: url("bg_body.gif"); 
+	-fx-background-size: 100%, 100%;
+}
+
+.tab-header-background{
+	-fx-background-image: url("bg_tabs.jpg");
+	-fx-background-size: 100%, 100%;
+	
+}
+.tab{
+	-fx-background-color: #C86D5F;
+}
+
+.tab:selected:top{
+	-fx-background-color: #FFC5BB;
+}
+
+.titled-pane > .title 
+{
+	-fx-background-image: url("bg_accordion.jpg");
+	-fx-background-size: 100%, 100%;
+}
+
+.titled-pane > .title > .text{
+	-fx-fill: #FFC5BB;
+}
+
+.titled-pane > .title > .arrow-button .arrow 
+{
+	-fx-background-color: #FFC5BB;
+}
+
+
+.differentButton{
+	-fx-background-color: #3E9988;
+	-fx-height: 40;
+}
+
+.invalidLabel > .text{
+	-fx-fill: red;
+}

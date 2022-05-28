@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" pannable="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManagerController">
+   <content>
+      <BorderPane prefHeight="600.0" prefWidth="600.0">
+         <center>
+            <Accordion nodeOrientation="RIGHT_TO_LEFT" styleClass="bodybg" stylesheets="@application.css">
+              <panes>
+                <TitledPane animated="false" stylesheets="@application.css" text="מרכיבים">
+                     <content>
+                        <SplitPane dividerPositions="0.6686643835616438" prefHeight="160.0" prefWidth="200.0">
+                          <items>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="componentList" prefHeight="200.0" prefWidth="200.0" />
+                                 </center>
+                                 <top>
+                                    <VBox BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox prefHeight="14.0" prefWidth="613.0" spacing="20.0">
+                                             <children>
+                                                <Label text="אפשרויות הצגה:" />
+                                                <RadioButton mnemonicParsing="false" onAction="#loadComponents" text="לפי ברירת מחדל">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="showComps" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" onAction="#filterByPopular" text="לפי פופולריות" toggleGroup="$showComps" />
+                                             </children>
+                                          </HBox>
+                                          <ButtonBar prefHeight="40.0">
+                                            <buttons>
+                                                <Button mnemonicParsing="false" onAction="#openComp" prefHeight="26.0" text="הצגת מרכיב" />
+                                                <Button mnemonicParsing="false" onAction="#addComp" text="הוספה" />
+                                            </buttons>
+                                          </ButtonBar>
+                                       </children>
+                                    </VBox>
+                                 </top>
+                              </BorderPane>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" nodeOrientation="RIGHT_TO_LEFT" SplitPane.resizableWithParent="false">
+                                 <content>
+                                    <BorderPane fx:id="componentPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0">
+                                       <top>
+                                          <ButtonBar BorderPane.alignment="TOP_RIGHT">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#closeComp" styleClass="differentButton" text="סגירת תצוגה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </top></BorderPane>
+                                 </content>
+                              </ScrollPane>
+                          </items>
+                        </SplitPane>
+                     </content>
+                </TitledPane>
+                <TitledPane animated="false" text="מנות">
+                     <content>
+                        <SplitPane dividerPositions="0.6686643835616438" prefHeight="160.0" prefWidth="200.0">
+                           <items>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="dishList" prefHeight="200.0" prefWidth="200.0" />
+                                 </center>
+                                 <top>
+                                    <VBox BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox spacing="20.0">
+                                             <children>
+                                                <Label text="אפשרויות הצגה:" />
+                                                <RadioButton mnemonicParsing="false" onAction="#loadDishes" text="לפי ברירת מחדל">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="showDishes" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" onAction="#filterByProfit" text="לפי רווח" toggleGroup="$showDishes" />
+                                             </children>
+                                          </HBox>
+                                          <ButtonBar prefHeight="40.0">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" onAction="#openDish" text="הצגת מנה" />
+                                                <Button mnemonicParsing="false" onAction="#addDish" text="הוספה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </children>
+                                    </VBox>
+                                 </top>
+                              </BorderPane>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" SplitPane.resizableWithParent="false">
+                                 <content>
+                                    <BorderPane fx:id="dishPane" nodeOrientation="RIGHT_TO_LEFT">
+                                       <top>
+                                          <ButtonBar BorderPane.alignment="TOP_RIGHT">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#closeDish" styleClass="differentButton" text="סגירת תצוגה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </top></BorderPane>
+                                 </content>
+                              </ScrollPane>
+                           </items>
+                        </SplitPane>
+                     </content>
+                </TitledPane>
+                  <TitledPane prefHeight="200.0" prefWidth="200.0" text="טבחים">
+                     <content>
+                        <SplitPane dividerPositions="0.6686643835616438" prefHeight="160.0" prefWidth="200.0">
+                           <items>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="cookList" prefHeight="200.0" prefWidth="200.0" />
+                                 </center>
+                                 <top>
+                                    <VBox BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="14.0" prefWidth="613.0" spacing="20.0">
+                                             <children>
+                                                <Label text="אפשרויות הצגה:" />
+                                                <RadioButton mnemonicParsing="false" onAction="#loadCook" text="כל הטבחים">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="showCook" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton fx:id="byExpert" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#showExpertBox" text="לפי התמחות" toggleGroup="$showCook">
+                                                   <graphic>
+                                                      <ComboBox fx:id="expertises" onAction="#filterCookByExpert" promptText="בחירת התמחות" />
+                                                   </graphic>
+                                                </RadioButton>
+                                             </children>
+                                          </HBox>
+                                          <ButtonBar prefHeight="40.0">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" onAction="#openCook" text="הצגת טבח" />
+                                                <Button mnemonicParsing="false" onAction="#addCook" text="הוספה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </children>
+                                    </VBox>
+                                 </top>
+                              </BorderPane>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" nodeOrientation="RIGHT_TO_LEFT" SplitPane.resizableWithParent="false">
+                                 <content>
+                                    <BorderPane fx:id="cookPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0">
+                                       <top>
+                                          <ButtonBar BorderPane.alignment="CENTER">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#closeCook" styleClass="differentButton" text="סגירת תצוגה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </top></BorderPane>
+                                 </content>
+                              </ScrollPane>
+                           </items>
+                        </SplitPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane prefHeight="200.0" prefWidth="200.0" text="אזורים">
+                     <content>
+                        <SplitPane dividerPositions="0.6686643835616438" prefHeight="160.0" prefWidth="200.0">
+                           <items>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="areaList" prefHeight="200.0" prefWidth="200.0" />
+                                 </center>
+                                 <top>
+                                    <ButtonBar prefHeight="40.0" BorderPane.alignment="CENTER">
+                                       <buttons>
+                                          <Button mnemonicParsing="false" onAction="#openDeliveryArea" text="הצגת אזור" />
+                                          <Button mnemonicParsing="false" onAction="#addDeliveryArea" text="הוספה" />
+                                       </buttons>
+                                    </ButtonBar>
+                                 </top>
+                              </BorderPane>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" nodeOrientation="RIGHT_TO_LEFT" SplitPane.resizableWithParent="false">
+                                 <content>
+                                    <BorderPane fx:id="areaPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0">
+                                       <top>
+                                          <ButtonBar BorderPane.alignment="CENTER">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#closeArea" styleClass="differentButton" text="סגירת תצוגה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </top></BorderPane>
+                                 </content>
+                              </ScrollPane>
+                           </items>
+                        </SplitPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane prefHeight="200.0" prefWidth="200.0" text="שליחים">
+                     <content>
+                        <SplitPane dividerPositions="0.6686643835616438" prefHeight="160.0" prefWidth="200.0">
+                           <items>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="deliveryPersonList" prefHeight="200.0" prefWidth="200.0" />
+                                 </center>
+                                 <top>
+                                    <ButtonBar prefHeight="40.0" BorderPane.alignment="CENTER">
+                                       <buttons>
+                                          <Button mnemonicParsing="false" onAction="#openDeliveryPerson" text="הצגת שליח" />
+                                          <Button mnemonicParsing="false" onAction="#addDeliveryPerson" text="הוספה" />
+                                       </buttons>
+                                    </ButtonBar>
+                                 </top>
+                              </BorderPane>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" SplitPane.resizableWithParent="false">
+                                 <content>
+                                    <BorderPane fx:id="deliveryPersonPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="234.0" prefWidth="244.0">
+                                       <top>
+                                          <ButtonBar BorderPane.alignment="CENTER">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#closeDelPerson" styleClass="differentButton" text="סגירת תצוגה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </top></BorderPane>
+                                 </content>
+                              </ScrollPane>
+                           </items>
+                        </SplitPane>
+                     </content>
+                  </TitledPane>
+                <TitledPane animated="false" text="לקוחות">
+                     <content>
+                        <SplitPane dividerPositions="0.6686643835616438">
+                           <items>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="customerList" prefHeight="200.0" prefWidth="200.0" />
+                                 </center>
+                                 <top>
+                                    <VBox BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="14.0" prefWidth="613.0" spacing="20.0">
+                                             <children>
+                                                <Label text="אפשרויות הצגה:" />
+                                                <RadioButton mnemonicParsing="false" onAction="#loadCustomers" text="כל הלקוחות">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="showCustomers" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" onAction="#filterBlackList" text="לקוחות ברשימה השחורה" toggleGroup="$showCustomers" />
+                                                <RadioButton mnemonicParsing="false" onAction="#filterNoBlackList" text="לקוחות שאינם ברשימה השחורה" toggleGroup="$showCustomers" />
+                                             </children>
+                                          </HBox>
+                                          <ButtonBar prefHeight="40.0">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" onAction="#openCustomer" text="הצגת לקוח" />
+                                                <Button mnemonicParsing="false" onAction="#addCustomer" text="הוספה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </children>
+                                    </VBox>
+                                 </top>
+                              </BorderPane>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" SplitPane.resizableWithParent="false">
+                                 <content>
+                                    <BorderPane fx:id="customerPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="234.0" prefWidth="244.0">
+                                       <top>
+                                          <ButtonBar BorderPane.alignment="CENTER">
+                                             <buttons>
+                                                <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#closeCustomer" styleClass="differentButton" text="סגירת תצוגה" />
+                                             </buttons>
+                                          </ButtonBar>
+                                       </top></BorderPane>
+                                 </content>
+                              </ScrollPane>
+                           </items>
+                        </SplitPane>
+                     </content>
+                </TitledPane>
+                  <TitledPane animated="false" text="הזמנות ומשלוחים">
+                     <content>
+                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab onSelectionChanged="#loadOrder" text="תצוגת הזמנות">
+                                 <content>
+                                    <SplitPane dividerPositions="0.6686643835616438" prefHeight="160.0" prefWidth="200.0">
+                                       <items>
+                                          <BorderPane>
+                                             <center>
+                                                <ListView fx:id="orderList" prefHeight="200.0" prefWidth="200.0" />
+                                             </center>
+                                             <top>
+                                                <VBox BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="14.0" prefWidth="613.0" spacing="20.0">
+                                                         <children>
+                                                            <Label text="אפשרויות הצגה:" />
+                                                            <RadioButton mnemonicParsing="false" onAction="#filterTodayOrders" text="היום">
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="showOrders" />
+                                                               </toggleGroup>
+                                                            </RadioButton>
+                                                            <RadioButton mnemonicParsing="false" onAction="#loadOrder" text="לפי סדר כרונולוגי" toggleGroup="$showOrders" />
+                                                         </children>
+                                                      </HBox>
+                                                      <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                                         <buttons>
+                                                            <Button mnemonicParsing="false" onAction="#openOrder" text="הצגת הזמנה" />
+                                                         </buttons>
+                                                      </ButtonBar>
+                                                   </children>
+                                                </VBox>
+                                             </top>
+                                          </BorderPane>
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" SplitPane.resizableWithParent="false">
+                                             <content>
+                                                <BorderPane fx:id="orderPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="234.0" prefWidth="244.0">
+                                                   <top>
+                                                      <ButtonBar BorderPane.alignment="CENTER">
+                                                         <buttons>
+                                                            <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#closeOrder" styleClass="differentButton" text="סגירת תצוגה" />
+                                                         </buttons>
+                                                      </ButtonBar>
+                                                   </top></BorderPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </items>
+                                    </SplitPane>
+                                 </content>
+                              </Tab>
+                            <Tab onSelectionChanged="#loadDelivery" text="תצוגת משלוחים">
+                              <content>
+                                    <SplitPane dividerPositions="0.5">
+                                       <items>
+                                          <BorderPane>
+                                             <center>
+                                                <ListView fx:id="deliveryList" prefHeight="205.0" prefWidth="482.0" />
+                                             </center>
+                                             <top>
+                                                <VBox BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <HBox spacing="20.0">
+                                                         <children>
+                                                            <Label text="אפשרויות הצגה:" />
+                                                            <RadioButton mnemonicParsing="false" onAction="#filterTodayDeliveries" text="היום">
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="showDeliveries" />
+                                                               </toggleGroup>
+                                                            </RadioButton>
+                                                            <RadioButton mnemonicParsing="false" onAction="#loadDelivery" text="לפי סדר כרונולוגי" toggleGroup="$showDeliveries" />
+                                                         </children>
+                                                      </HBox>
+                                                      <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                                        <buttons>
+                                                          <Button mnemonicParsing="false" onAction="#openDelivery" text="הצגת משלוח" />
+                                                        </buttons>
+                                                      </ButtonBar>
+                                                   </children>
+                                                </VBox>
+                                             </top>
+                                          </BorderPane>
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" SplitPane.resizableWithParent="false">
+                                             <content>
+                                                <BorderPane fx:id="deliveryPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="234.0" prefWidth="244.0">
+                                                   <top>
+                                                      <ButtonBar BorderPane.alignment="CENTER">
+                                                         <buttons>
+                                                            <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#closeDelivery" styleClass="differentButton" text="סגירת תצוגה" />
+                                                         </buttons>
+                                                      </ButtonBar>
+                                                   </top></BorderPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </items>
+                                    </SplitPane>
+                              </content>
+                            </Tab>
+                              <Tab onSelectionChanged="#extraDelData" text="מידע נוסף">
+                                <content>
+                                    <BorderPane>
+                                       <center>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="bodybg" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <GridPane prefHeight="89.0" prefWidth="558.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.39996337890625" minWidth="10.0" prefWidth="144.3999481201172" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.6000518798828" minWidth="10.0" prefWidth="467.6000518798828" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label text="סה&quot;כ משלוחים רגילים:" />
+                                                      <Label text="סה&quot;כ משלוחי אקספרס:" GridPane.rowIndex="1" />
+                                                      <Label fx:id="regularNum" text="Label" GridPane.columnIndex="1" />
+                                                      <Label fx:id="expressNum" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Label text="רווח ממשלוחי אקספרס:" GridPane.rowIndex="2" />
+                                                      <Label fx:id="expressRevenue" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </VBox>
+                                       </center>
+                                    </BorderPane>
+                                </content>
+                              </Tab>
+                              <Tab onSelectionChanged="#openAddDelAndOrder" text="הוספה">
+                                 <content>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true">
+                                       <content>
+                                          <BorderPane fx:id="orderAndDeliveryPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" />
+                                       </content>
+                                    </ScrollPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
+         </center>
+         <top>
+            <VBox alignment="CENTER" styleClass="header-section" stylesheets="@application.css">
+               <children>
+                  <ImageView fitHeight="124.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Desktop/Pictures/javafx_img/logo.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="welcome" alignment="CENTER" contentDisplay="CENTER" nodeOrientation="RIGHT_TO_LEFT" text="תצוגת הנהלה" textFill="#efefef" underline="true" />
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </content>
+</ScrollPane>

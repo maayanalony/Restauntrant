@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane styleClass="bodybg" stylesheets="@application.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EndPlaceOrderController">
+   <top>
+      <AnchorPane prefHeight="56.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="date" layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="198.0" />
+            <Label fx:id="name" alignment="CENTER" layoutX="205.0" layoutY="33.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="18.0" prefWidth="190.0" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <GridPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="306.0" prefWidth="465.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.4000244140625" minWidth="10.0" prefWidth="103.20001220703125" />
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="496.79998779296875" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="210.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="מזהה הזמנה" />
+            <Label text="אזור שליחות" GridPane.rowIndex="2" />
+            <Label text="שכונה" GridPane.rowIndex="3" />
+            <Label text="שליח" GridPane.rowIndex="4" />
+            <Label text="מנות" GridPane.rowIndex="5" />
+            <Label fx:id="orderID" prefHeight="18.0" prefWidth="182.0" GridPane.columnIndex="1" />
+            <Label fx:id="area" prefHeight="18.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="neighberhood" prefHeight="18.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="deliveryPerson" prefHeight="18.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ListView fx:id="dishesList" prefHeight="190.0" prefWidth="487.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="מזהה משלוח" GridPane.rowIndex="1" />
+            <Label fx:id="deliveryID" prefHeight="18.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="סכום ההזמנה&#10;כולל משלוח" GridPane.rowIndex="6" />
+            <Label fx:id="payment" prefHeight="18.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <Button fx:id="backTo" mnemonicParsing="false" onAction="#goBack" styleClass="differentButton" text="חזרה" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
